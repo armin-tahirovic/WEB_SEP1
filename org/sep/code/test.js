@@ -7,14 +7,14 @@ var year;
 var day_input;
 var month_input;
 var year_input;
-var innerText = "<table><tr><th>Date</th><th>Meter Number</th><th>Channel</th><th>Reading</th><th>Measuretype</th><th>Address</th></tr>";
 
 readUser();
 var brugernavnInfo = "clear";
 var userArray = [];
 
 function readText() {
-    $.get("Text", function (data) {
+    $.get("Meter1", function (data) {
+        var innerText = "<table><tr><th>Date</th><th>Consumption</th><th>Unit</th></tr>";
 
         text = data;
         date = $("#daterpicker").val().split('-');
@@ -36,9 +36,6 @@ function readText() {
                     "<td>" + line[0] + "</td>\n" +
                     "<td>" + line[1] + "</td>\n" +
                     "<td>" + line[2] + "</td>\n" +
-                    "<td>" + line[3] + "</td>\n" +
-                    "<td>" + line[4] + "</td>\n" +
-                    "<td>" + line[7] + line[8] + " <br>" + line[9] + "</td>\n" +
                     "</tr>";
             }
             return innerText;
@@ -48,7 +45,6 @@ function readText() {
 
         document.getElementById("text").innerHTML = innerText;
     });
-
     return false;
 }
 

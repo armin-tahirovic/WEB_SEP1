@@ -2,15 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="jquery.csv.js"></script>
-    <script src="test.js"></script>
+    <script src="code/jquery-3.3.1.min.js"></script>
+    <script src="code/jquery.csv.js"></script>
+    <script src="code/login.js"></script>
+    <script src="code/test.js"></script>
+    <link href="CSS/styles.css" rel="stylesheet" type="text/css">
 
-    <title>Title_something</title>
-    <input type="submit" value="Ready!" onclick="readText(); return false;" />
-    <div id="text"> </div>
+    <title>Energi system</title>
+
 </head>
 <body>
+    <h1>Log ind</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <form name="logInd">
+                    <input id="brugernavn" type="text" name="brugernavn_" placeholder="Brugernavn">
+                    <input id="kode" type="password" name="kode_" placeholder="Kode">
+                </form>
+                <button id="knap">Log ind</button>
+            </div>
+        </div>
+    </div>
+<script>
+    function login() {
+    let brugernavn = document.forms["logInd"].brugernavn_.value;
+    let kode = document.forms["logInd"].kode_.value;
+    var yes = false;
 
+    for (var i = 0; i < userArray.length; i++) {
+        if (userArray[i][0] === brugernavn && userArray[i][1] === kode) {
+            yes = true;
+        }
+    }
+
+    if (brugernavn === "" && kode === "") {
+        alert("Udfyld feltet/felterne")
+    } else if (yes) {
+        window.open('Forbrug.html');
+    } else {
+        alert("Forkert match")
+    }
+}
+
+document.getElementById("knap").addEventListener("click", login, false);</script>
 </body>
 </html>
